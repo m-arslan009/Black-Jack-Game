@@ -7,7 +7,11 @@ let message = "";
 let messageEl = document.getElementById("message-el");
 let sumEl = document.getElementById("sum-el");
 let cardsEl = document.getElementById("cards-el");
+
 function startGame() {
+    renderGame();
+}
+function renderGame() {
     cardsEl.textContent = "Cards: " + firstCard + " " + secondCard;
     if(sum < 21) {
         message = "Do you want to draw a new card?"
@@ -22,10 +26,13 @@ function startGame() {
         message = "You're out of the game!"
         isAlive = false;
     }
-    sumEl.textContent = sumEl.textContent + " " + sum;
+    sumEl.textContent = "Sum: " + " " + sum;
     messageEl.textContent = message
 }
 
 function newCard() {
     console.log("Drawing a new card from the deck!");
+    let card = 7;
+    sum += card;
+    renderGame();
 }
