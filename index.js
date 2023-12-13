@@ -8,6 +8,16 @@ let message = "";
 let messageEl = document.getElementById("message-el");
 let sumEl = document.getElementById("sum-el");
 let cardsEl = document.getElementById("cards-el");
+
+let player = {
+    name: "Per",
+    chips: 145
+}
+
+let playerEl = document.getElementById("player-el");
+
+playerEl.textContent = player.name + ": $" + player.chips;
+
 console.log(cards);
 function getRandomCard() {
     let randomNumber = Math.floor(Math.random() * 13) + 1;
@@ -55,8 +65,11 @@ function renderGame() {
 }
 
 function newCard() {
-    let card = getRandomCard();
-    sum += card;
-    cards.push(card);
-    renderGame();
+    // set condition if the player is alive and has no black jack then he would be able to get new card
+    if(isAlive && !hasBlackJack) {
+        let card = getRandomCard();
+        sum += card;
+        cards.push(card);
+        renderGame();
+    }   
 }
